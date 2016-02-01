@@ -12,5 +12,12 @@
 			"wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
 			"wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"]
 		}
+	},
+	"require": {
+		"ext-gd": "*",
+		"johnpbloch/wordpress": "^4.4",
+		"wpackagist-plugin/amazon-web-services": "^0.3.4",
+		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
+		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7"
 	}
 }
