@@ -1,0 +1,3 @@
+path: wordpress
+apache_modules: [ mod_rewrite ]
+disabled_commands: [ "core config" ]

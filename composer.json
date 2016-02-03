@@ -18,6 +18,25 @@
 		"johnpbloch/wordpress": "^4.4",
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
-		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7"
+		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
+		"wp-cli/wp-cli": "^0.22.0"
+	},
+	"scripts": {
+		"wordpress-setup-core-install-prompt": "wp core install --prompt",
+		"wordpress-setup-core-install": "wp core install --skip-email",
+		"wordpress-setup-clear-home": "wp option delete home || true",
+		"wordpress-setup-configure-s3": "echo '{\"domain\":\"path\",\"copy-to-s3\":\"1\",\"serve-from-s3\":\"1\",\"ssl\":\"request\"}' | wp option add tantan_wordpress_s3 --format=json",
+		"wordpress-setup-enable-plugins": "wp plugin activate amazon-web-services amazon-s3-and-cloudfront sendgrid-email-delivery-simplified",
+		"wordpress-setup-permalink-structure": "wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/' || true",
+		"wordpress-setup": [
+			"@wordpress-setup-core-install-prompt",
+			"@wordpress-setup-finalize"
+		],
+		"wordpress-setup-finalize": [
+			"@wordpress-setup-clear-home",
+			"@wordpress-setup-configure-s3",
+			"@wordpress-setup-enable-plugins",
+			"@wordpress-setup-permalink-structure"
+		]
 	}
 }
