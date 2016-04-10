@@ -8,6 +8,8 @@ The WordPress installation is fully contained in a `wordpress` subfolder upon `c
 
 Automatic updates for WordPress or plugins, and theme editing, are disabled intentionally. What you deploy is what gets executed, which makes setups simple to deploy, and, most importantly, reproducible. See further below for information on how to update WordPress versions.
 
+[WP-CLI](http://wp-cli.org) is used for easier (or automated) handling of tasks such as enabling plugins or storing configuration options. After a deploy, a set of pre-configured [Composer scripts](https://getcomposer.org/doc/articles/scripts.md) can run several administrative functions using WP-CLI, such as initially configuring the blog, and enabling plugins (this happens either automatically when using a Heroku button deploy, or manually). This means that the installation of plugins and their configuration can be part of your version controlled code, so you can easily re-create a blog installation without any manual steps that need separate documentation.
+
 The configuration file is kept as generic as possible; on Heroku, add-ons [JawsDB](https://elements.heroku.com/addons/jawsdb) (for MySQL), [Bucketeer](https://elements.heroku.com/addons/bucketeer) (for S3 storage), and [SendGrid](https://elements.heroku.com/addons/sendgrid) (for E-Mails) are used.
 
 The assumption is that this installation runs behind a load balancer whose `X-Forwarded-Proto` header value can be trusted; it is used to determine whether the request protocol is HTTPS or not.
@@ -28,10 +30,10 @@ To set up WordPress' Cron Jobs using [Heroku Scheduler](https://elements.heroku.
 
 ### Clone
 
-Clone this repo:
+Clone this repo (we're naming the Git remote "`upstream`" since you'll likely want to have "`origin`" be your actual site - you can [sync](https://help.github.com/articles/syncing-a-fork) changes from this repository later):
 
 ```
-$ git clone https://github.com/dzuelke/wordpress-12factor
+$ git clone -o upstream https://github.com/dzuelke/wordpress-12factor
 $ cd wordpress-12factor
 ```
 
@@ -95,6 +97,38 @@ Navigate to the application's URL, or open your browser the lazy way:
 ```
 $ heroku open
 ```
+
+## Installing a new Plugin or Theme
+
+1. Search for your plugin or theme on [WordPress Packagist](http://wpackagist.org);
+1. Click the latest version and check the version selector string in the text box that appears - it will look like `"wpackagist-theme/hueman": "1.5.7"` or `"wpackagist-plugin/akismet": "3.1.7"`;
+1. You don't want such an exact version, but instead a more lenient selector like (in the case above) `^1.5.7` or at least `~1.5.7` (see the [Composer docs](https://getcomposer.org/doc/articles/versions.md#next-significant-release-operators) for details);
+1. Run `composer require wpackagist-$type/name:^$version`, for example:
+
+    ```
+    composer require wpackagist-plugin/akismet:^3.1.7
+    ```
+    
+    or
+    
+    ```
+    composer require wpackagist-plugin/hueman:^1.5.7
+    ```
+
+1. Run `git add composer.json composer.lock` and `git commit`;
+1. `git push heroku master`
+
+### Activating a Plugin or Theme once
+
+Run `heroku run 'vendor/bin/wp plugin activate` or `vendor/bin/wp theme activate` and pass the name of the plugin or theme (e.g. `wp theme activate hueman`).
+
+However, if you're working on an actual project, you will also want to ensure that this step can be run as part of the installation - see the next section for info.
+
+### Activating a Plugin or Theme, the repeatable way
+
+See the `scripts` section in `composer.json` for inspiration. A [Composer script](https://getcomposer.org/doc/articles/scripts.md) named `wordpress-setup-enable-plugins` (which gets in turn called by another script) enables three plugins by default using WP-CLI's `wp` command, and you can just add yours to the list. You'll notice that a separate step before also configures one of the plugins; you can do the same for your customizations.
+
+After you adjusted the scripts section, run `composer update --lock`, then `git add composer.json composer.lock`, and `git commit` the changes.
 
 ## Updating WordPress and Plugins
 
