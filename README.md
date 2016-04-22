@@ -148,6 +148,16 @@ $ git commit -m "new WordPress and Plugins"
 $ git push heroku master
 ```
 
+## Web Servers
+
+This project runs Apache by default, using the `apache2-wordpress.conf` [configuration include](/articles/custom-php-settings#web-server-settings) and with the `wordpress/` directory [defined as the document root](/articles/deploying-php#configuring-the-document-root).
+
+To use Nginx instead, [change](/articles/deploying-php#selecting-a-web-server) `Procfile` to the following:
+
+```
+web: vendor/bin/heroku-php-nginx -C nginx-wordpress.conf wordpress/
+```
+
 ## WordPress Cron
 
 Instead of having WordPress check on each page load if Cron Jobs need to be run (thus potentially slowing down the site for some users), you can invoke Cron externally:

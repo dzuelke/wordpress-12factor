@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-nginx -C nginx-wordpress.conf wordpress/
+web: vendor/bin/heroku-php-apache2 -C apache2-wordpress.conf wordpress/
