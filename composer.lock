@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e466cbd7590dcff0e41c82e5856c58bd",
-    "content-hash": "7e34ce000ff949f91d3add3f2fa85521",
+    "hash": "e95d5b1e47d87d7dbd14bd973053e7a9",
+    "content-hash": "93ca55bc1af2f4fb2151ca8cf6efa2af",
     "packages": [
         {
             "name": "composer/installers",
@@ -485,12 +485,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "fbd0083cd9dac06556bd1096deaa0295c18a7584"
+                "reference": "9b4d2c0ba53d3226f455d5cc7d3655f6a5371b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/fbd0083cd9dac06556bd1096deaa0295c18a7584",
-                "reference": "fbd0083cd9dac06556bd1096deaa0295c18a7584",
+                "url": "https://api.github.com/repos/symfony/config/zipball/9b4d2c0ba53d3226f455d5cc7d3655f6a5371b37",
+                "reference": "9b4d2c0ba53d3226f455d5cc7d3655f6a5371b37",
                 "shasum": ""
             },
             "require": {
@@ -1039,13 +1039,13 @@
             "version": "0.9.12",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
+                "url": "https://plugins.svn.wordpress.org/amazon-s3-and-cloudfront/",
                 "reference": "tags/0.9.12"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://downloads.wordpress.org/plugin/amazon-s3-and-cloudfront.0.9.12.zip",
-                "reference": null,
+                "reference": "tags/0.9.12",
                 "shasum": null
             },
             "require": {
@@ -1079,13 +1079,13 @@
             "version": "1.7.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/sendgrid-email-delivery-simplified/",
-                "reference": "trunk"
+                "url": "https://plugins.svn.wordpress.org/sendgrid-email-delivery-simplified/",
+                "reference": "tags/1.7.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.zip",
-                "reference": null,
+                "url": "https://downloads.wordpress.org/plugin/sendgrid-email-delivery-simplified.1.7.2.zip",
+                "reference": "tags/1.7.2",
                 "shasum": null
             },
             "require": {
