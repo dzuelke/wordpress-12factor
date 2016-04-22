@@ -19,7 +19,7 @@
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
-		"wp-cli/wp-cli": "^0.22.0"
+		"wp-cli/wp-cli": "dev-master"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
