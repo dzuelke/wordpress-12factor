@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d3d66b903905e6cd9d6635451953f4a6",
-    "content-hash": "95fb493d484fa7fc606dbf9b28652525",
+    "hash": "5d84991b45beb9867fb5219da99ad275",
+    "content-hash": "487f83a5ac91afd8a69ccdd6389ef032",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -365,6 +365,23 @@
                 "validator"
             ],
             "time": "2016-05-04 12:27:30"
+        },
+        {
+            "name": "dzuelke/twentyfifteen-child",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "themes/twentyfifteen-child",
+                "reference": "afc7561f9bf7efbf970bd83cc5fe261a9efdf8c2",
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-theme",
+            "transport-options": {
+                "symlink": false
+            }
         },
         {
             "name": "johnpbloch/wordpress",

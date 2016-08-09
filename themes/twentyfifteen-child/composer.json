@@ -1,0 +1,8 @@
+{
+	"type": "wordpress-theme",
+	"name": "dzuelke/twentyfifteen-child",
+	"version": "1.0.0",
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

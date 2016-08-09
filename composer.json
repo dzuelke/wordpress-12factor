@@ -3,6 +3,13 @@
 		{
 			"type": "composer",
 			"url": "https://wpackagist.org"
+		},
+		{
+			"type": "path",
+			"url": "themes/twentyfifteen-child/",
+			"options": {
+				"symlink": false
+			}
 		}
 	],
 	"extra": {
@@ -19,7 +26,8 @@
 		"wpackagist-plugin/amazon-web-services": "^0.3.4",
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
-		"wp-cli/wp-cli": "^0.23.1"
+		"wp-cli/wp-cli": "^0.23.1",
+		"dzuelke/twentyfifteen-child": "*"
 	},
 	"scripts": {
 		"wordpress-setup-core-install-prompt": "wp core install --prompt",
@@ -38,6 +46,7 @@
 			"@wordpress-setup-enable-plugins",
 			"@wordpress-setup-permalink-structure"
 		],
+		"wordpress-setup-demo-theme": "wp theme activate twentyfifteen-child",
 		"wordpress-setup-welcome-post": [
 			"echo 'It works! Please see <a href=\"https://github.com/dzuelke/wordpress-12factor\">wordpress-12factor on GitHub</a> for info and post-install instructions.' | wp post update 1 - --post_title=\"Welcome to WordPress on Heroku\""
 		]

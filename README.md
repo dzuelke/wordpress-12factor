@@ -130,6 +130,42 @@ See the `scripts` section in `composer.json` for inspiration. A [Composer script
 
 After you adjusted the scripts section, run `composer update --lock`, then `git add composer.json composer.lock`, and `git commit` the changes.
 
+## Bundling a Custom Theme or Plugin
+
+It's likely you'll want to have a custom theme for your project, or use plugin code to customize the behavior of WordPress.
+
+If you repeatedly use these same customizations across multiple projects, you should put them into their own (private or public) GitHub repository and reference them in the same way as explained above.
+
+However, if the customizations you've made are specific to one project, then you should bundle them with the project code and pull them in as if they were an external theme or plugin.
+
+You can put custom themes into the `themes/` directory under the project root. Give each theme its own directory and include a custom repository at the top of your `composer.json`, in the `repositories` section:
+
+```
+{
+	"type": "path",
+	"url": "themes/*/"
+}
+```
+
+Each folder under `themes/` is just a regular WordPress theme, except with a `composer.json` similar to the following:
+
+```
+{
+	"type": "wordpress-theme",
+	"name": "yourgithubname/yourthemename",
+	"version": "1.0.0",
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
+```
+
+The `wordpress-theme` type will cause the correct installation of your theme (see `extra`/`installer-paths` in `composer.json`).
+
+The same technique can be used for plugins; simply adjust the directory name and `repositories` entry, and use `wordpress-plugin` as the type in each plugin's `composer.json`.
+
+Whenever you run `composer install` locally, the theme simply gets symlinked into the correct WordPress directory. That means any changes you make to the theme in the `themes/` directory will immediately be applied to your running site.
+
 ## Updating WordPress and Plugins
 
 To update all dependencies:

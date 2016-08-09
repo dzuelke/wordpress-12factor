@@ -1,0 +1,16 @@
+/*
+ Theme Name:   Twenty Fifteen Child
+ Description:  Twenty Fifteen Child Theme
+ Author:       David Zuelke
+ Template:     twentyfifteen
+ Version:      1.0.0
+ License:      MIT
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twenty-fifteen-child
+*/
+
+body {
+    background-image: -webkit-linear-gradient(top , #664a86, #534292);
+    background-image: linear-gradient(to bottom, #664a86, #534292);
+    background-color: #534292
+}
