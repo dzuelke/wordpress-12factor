@@ -27,6 +27,9 @@ location ~* /(?:uploads|files)/.*\.php$ {
 	deny all;
 }
 
+location /wp-content/ {
+	root "<?=getenv("HEROKU_APP_DIR")?>";
+}
 
 # WordPress single site rules.
 # Designed to be included in any server {} block.

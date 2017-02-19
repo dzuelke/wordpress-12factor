@@ -6,15 +6,19 @@
 		},
 		{
 			"type": "path",
-			"url": "themes/twentyfifteen-child/"
+			"url": "plugins/*/"
+		},
+		{
+			"type": "path",
+			"url": "themes/*/"
 		}
 	],
 	"extra": {
 		"wordpress-install-dir": "wordpress",
 		"installer-paths": {
-			"wordpress/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-			"wordpress/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-			"wordpress/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+			"wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+			"wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+			"wp-content/themes/{$name}/": ["type:wordpress-theme"]
 		}
 	},
 	"require": {
@@ -24,6 +28,7 @@
 		"wpackagist-plugin/amazon-s3-and-cloudfront": "^0.9.11",
 		"wpackagist-plugin/sendgrid-email-delivery-simplified": "^1.7",
 		"wp-cli/wp-cli": "^0.23.1",
+		"wpackagist-theme/twentyfifteen": "*",
 		"dzuelke/twentyfifteen-child": "*"
 	},
 	"scripts": {

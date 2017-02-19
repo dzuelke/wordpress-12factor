@@ -4,7 +4,9 @@ WordPress, the [Twelve-Factor](http://12factor.net/) way: fully managed using Co
 
 ## General Concepts and Considerations
 
-The WordPress installation is fully contained in a `wordpress` subfolder upon `composer install`. A `wp-config.php` resides in the root of the project, and uses several different environment variables to control behavior.
+The WordPress installation is fully contained in top-level `wordpress` and `wp-content` directories upon `composer install`. A `wp-config.php` resides in the root of the project, and uses several different environment variables to control behavior.
+
+Locally bundled custom themes and plugins from top-level `themes` and `plugins` directories can be referenced for inclusion via `composer.json` and will be linked into `wp-content`.
 
 Automatic updates for WordPress or plugins, and theme editing, are disabled intentionally. What you deploy is what gets executed, which makes setups simple to deploy, and, most importantly, reproducible. See further below for information on how to update WordPress versions.
 
@@ -191,7 +193,7 @@ This project runs Apache by default, using the `apache2-wordpress.conf` [configu
 To use Nginx instead, [change](/articles/deploying-php#selecting-a-web-server) `Procfile` to the following:
 
 ```
-web: vendor/bin/heroku-php-nginx -C nginx-wordpress.conf wordpress/
+web: vendor/bin/heroku-php-nginx -C nginx-wordpress.conf.php wordpress/
 ```
 
 ## WordPress Cron
